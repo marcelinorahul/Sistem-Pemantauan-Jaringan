@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Device Detail</h1>
+  <h2>{{ device.name }}</h2>
+  <p>IP Address: {{ device.ip_address }}</p>
+  <p>CPU Usage: {{ device.cpu_usage }}%</p>
+  <p>Memory Usage: {{ device.mem_usage }}%</p>
+  <p>Bandwidth Usage: {{ device.bandwidth }} Mbps</p>
+  <h3>Open Ports</h3>
+  {% if device.open_ports %}
+    <ul>
+      {% for port in device.open_ports.split(',') %}
+        <li>{{ port }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No open ports detected.</p>
+  {% endif %}
+{% endblock %}
